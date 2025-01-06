@@ -11,7 +11,7 @@ function App() {
   useEffect(() => {
     const fetchTransactions = async () => {
       try {
-        const response = await axios.get("http://localhost:8000/api/transactions");
+        const response = await axios.get(`${import.meta.env.VITE_REACT_APP_BACKEND_BASEURL}/api/transactions`);
         setTransactions(response.data);
       } catch (error) {
         console.error("Error fetching transactions:", error);
@@ -22,7 +22,7 @@ function App() {
 
   const addTransaction = async (transaction) => {
     try {
-      const response = await axios.post("http://localhost:8000/api/transactions", transaction);
+      const response = await axios.post(`${import.meta.env.VITE_REACT_APP_BACKEND_BASEURL}/api/transactions`, transaction);
       setTransactions([...transactions, response.data]);
     } catch (error) {
       console.error("Error adding transaction:", error);
@@ -31,7 +31,7 @@ function App() {
 
   const deleteTransaction = async (id) => {
     try {
-      await axios.delete(`http://localhost:8000/api/transactions/${id}`);
+      await axios.delete(`${import.meta.env.VITE_REACT_APP_BACKEND_BASEURL}/api/transactions/${id}`);
       setTransactions(transactions.filter((txn) => txn._id !== id));
     } catch (error) {
       console.error("Error deleting transaction:", error);
