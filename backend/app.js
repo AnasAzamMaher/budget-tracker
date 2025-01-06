@@ -4,7 +4,6 @@ const bodyParser = require('body-parser');
 const dotenv = require('dotenv');
 const connectDB = require('./config/db');
 const transactionRoutes = require('./routes/TransactionRoute');
-const { Processor } = require('postcss');
 
 dotenv.config();
 connectDB();
