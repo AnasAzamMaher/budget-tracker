@@ -1,11 +1,10 @@
-
 const TransactionModel = require('../models/TransactionModel');
 
 // Get all Transactions
 const getTransactions = async (req, res) => {
     try {
-        const transaction = await TransactionModel.find();
-        res.status(200).json(transaction);
+        const transactions = await TransactionModel.find();
+        res.status(200).json(transactions);
     } catch (error) {
         res.status(500).json({ error: 'May be Server Error' });
     }
@@ -14,7 +13,7 @@ const getTransactions = async (req, res) => {
 // Add Transaction
 const addTransactions = async (req, res) => {
     try {
-        const {title, amount, category } = req.body;
+        const {title, amount, category, type } = req.body;
 
         if (!title || !amount || !category) {
             return res.status(400).json({ error: 'All fields are required' });
@@ -23,25 +22,34 @@ const addTransactions = async (req, res) => {
         const transaction = new TransactionModel({
             title,
             amount, 
-            category
+            category,
+            type
         })
 
         const savedTransaction = await transaction.save();
         res.status(201).json(savedTransaction);
     } catch (error) {
-        res.status(500).json({ error: 'May be Server Error' });
+        res.status(500).json({ error: 'Add: May be Server Error' });
     }
 }
 
 // Delete transaction
-const deleteTransactions = async () => {
+const deleteTransactions = async (req, res) => {
     try {
         const { id } = req.params;
 
-        const transaction = await TransactionModel.findByIdAndDelete();
-        if(!transaction) return res.status(404).json({ error: 'Transaction not found' });
-        res.status(200).json({message : "Transaction delete"})
+        const transaction = await TransactionModel.findByIdAndDelete(id);
+
+        if (!transaction) {
+            return res.status(404).json({ error: 'Transaction not found' });
+        }
+
+        res.status(200).json({ message: "Transaction deleted successfully" });
     } catch (error) {
-        res.status(500).json({ error: 'May be Server Error' });
+        console.error(error);
+        res.status(500).json({ error: 'Server Error while deleting transaction' });
     }
-}
+};
+
+
+module.exports = { getTransactions, addTransactions, deleteTransactions };

@@ -17,15 +17,15 @@ const Summary = ({ transactions }) => {
       <div className="flex justify-between">
         <div>
           <h3 className="text-green-500 font-bold">Income</h3>
-          <p>${income.toFixed(2)}</p>
+          <p>PKR {income.toFixed(2)}</p>
         </div>
         <div>
           <h3 className="text-red-500 font-bold">Expense</h3>
-          <p>${expense.toFixed(2)}</p>
+          <p>PKR {expense.toFixed(2)}</p>
         </div>
         <div>
           <h3 className="text-blue-500 font-bold">Balance</h3>
-          <p>${balance.toFixed(2)}</p>
+          <p>PKR {balance.toFixed(2)}</p>
         </div>
       </div>
     </div>

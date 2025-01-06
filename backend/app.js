@@ -7,20 +7,19 @@ const transactionRoutes = require('./routes/TransactionRoute');
 
 dotenv.config();
 connectDB();
+const app = express();
 
 const corsOptions = {
-    origin: 'http://localhost:5173',  // Add your frontend URL here
-    methods: ['GET', 'POST', 'DELETE'],  // Allow these HTTP methods
-  };
-app.use(cors(corsOptions));
+    origin: 'http://localhost:5173',  
+    methods: ['GET', 'POST', 'DELETE'],
+};
 
-const app = express();
-app.use(cors());
+app.use(cors(corsOptions));
 app.use(bodyParser.json());
 
 app.use('/api/transactions', transactionRoutes);
 
-const PORT = process.env.PORT || 8000;
+const PORT = process.env.PORT;
 app.listen(PORT, () => {
     console.log(`Server running on http://localhost:${PORT}`);
 });

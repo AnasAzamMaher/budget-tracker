@@ -8,7 +8,6 @@ import CategoryBreakdown from "./components/CategoryBreakdown";
 function App() {
   const [transactions, setTransactions] = useState([]);
 
-  // Fetch transactions from the backend
   useEffect(() => {
     const fetchTransactions = async () => {
       try {
@@ -21,7 +20,6 @@ function App() {
     fetchTransactions();
   }, []);
 
-  // Add transaction
   const addTransaction = async (transaction) => {
     try {
       const response = await axios.post("http://localhost:8000/api/transactions", transaction);
@@ -31,7 +29,6 @@ function App() {
     }
   };
 
-  // Delete transaction
   const deleteTransaction = async (id) => {
     try {
       await axios.delete(`http://localhost:8000/api/transactions/${id}`);
@@ -43,7 +40,7 @@ function App() {
 
   return (
     <>
-      <h1 className="bg-red-500 text-white text-center py-4">Budget Management App</h1>
+      <h1 className="bg-blue-500 text-xl md:text-3xl font-semibold text-white text-center py-4 ">Anas Budget Tracker App</h1>
       <TransactionForm addTransaction={addTransaction} />
       <TransactionList transactions={transactions} deleteTransaction={deleteTransaction} />
       <Summary transactions={transactions} />
