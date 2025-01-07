@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 
 
 ## Anas Budget Tracker App
@@ -18,11 +19,10 @@ Task App
 
 ## Basic Knowledge
 - React Js
-- HTML, CSS
+- HTML, CSS, Javascript
 
 ## Screen Shots
 
 ![Budget Tracker Form Screenshot](./frontend/src/assets/input.png)
 ![Budget Tracker List Screenshot](./frontend/src/assets/lists.png)
 ![Budget Tracker Summary Screenshot](./frontend/src/assets/summary.png)
-
