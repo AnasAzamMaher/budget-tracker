@@ -1,9 +1,9 @@
-<<<<<<< HEAD
-
 
 ## Anas Budget Tracker App
 
-Task App 
+Developed a budget tracker with categorized transactions, dynamic data visualization, and responsive design.
+Enabled CRUD operations for managing expenses and income with real-time updates and scalable architecture.
+
 
 
 ## What I Used
